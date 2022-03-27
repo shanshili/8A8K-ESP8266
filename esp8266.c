@@ -1,5 +1,5 @@
 /*
-	´®¿Ú1ÓÃÓÚESPÍ¨ĞÅ
+	ä¸²å£1ç”¨äºESPé€šä¿¡
 */
 //=================================================================================//
 // OLED
@@ -32,35 +32,25 @@ void IOT_Publish_Temphum(int temp, unsigned int hum);
 //*********************************MQTT message*************************************//
 
 code const u8 MessageConnect[115] = {
-		0X10,0X71,0X00,0X04,0X4D,0X51,0X54,0X54,0X04,0XC2,0X00,0X64,0X00,0X26,0X30,
-		0X31,0X34,0X34,0X7c,0X73,0X65,0X63,0X75,0X72,0X65,0X6d,0X6f,0X64,0X65,0X3d,
-		0X33,0X2c,0X73,0X69,0X67,0X6e,0X6d,0X65,0X74,0X68,0X6f,0X64,0X3d,0X68,0X6d,
-		0X61,0X63,0X73,0X68,0X61,0X31,0X7c,0X00,0X13,0X64,0X65,0X76,0X69,0X63,0X65,
-		0X31,0X26,0X61,0X31,0X55,0X55,0X42,0X68,0X76,0X65,0X4b,0X4d,0X76,0X00,0X28,
-		0X61,0X36,0X39,0X31,0X34,0X65,0X36,0X36,0X38,0X65,0X30,0X65,0X36,0X61,0X34,
-		0X64,0X38,0X63,0X61,0X62,0X35,0X66,0X39,0X31,0X39,0X36,0X61,0X37,0X32,0X66,
-		0X32,0X62,0X30,0X65,0X38,0X33,0X34,0X65,0X36,0X35
+"Confidentiality confidentiality"
 };
 
 code const u8 MessageSubscribeTopic[57] = {
-	  0X82,0X37,0X00,0X0A,0X00,0X32,0X2f,0X73,0X79,0X73,0X2f,0X61,0X31,0X55,0X55,
-	  0X42,0X68,0X76,0X65,0X4b,0X4d,0X76,0X2f,0X64,0X65,0X76,0X69,0X63,0X65,0X31,
-	  0X2f,0X74,0X68,0X69,0X6e,0X67,0X2f,0X65,0X76,0X65,0X6e,0X74,0X2f,0X70,0X72,
-	  0X6f,0X70,0X65,0X72,0X74,0X79,0X2f,0X70,0X6f,0X73,0X74,0X00
+"Confidentiality confidentiality"
 };
 //**********************************UART-INIT*****************************************//
-void Uart_Init()  //´®¿Ú1 Ä£Ê½1  8Î»Êı¾İ ¶¨Ê±Æ÷1 115200bps@24.000MHz
+void Uart_Init()  //ä¸²å£1 æ¨¡å¼1  8ä½æ•°æ® å®šæ—¶å™¨1 115200bps@24.000MHz
 {
-	SCON = 0x50;		//8Î»Êı¾İ,¿É±ä²¨ÌØÂÊ
-	AUXR |= 0x40;		//¶¨Ê±Æ÷1Ê±ÖÓÎªFosc,¼´1T
-	AUXR &= 0xFE;		//´®¿Ú1Ñ¡Ôñ¶¨Ê±Æ÷1Îª²¨ÌØÂÊ·¢ÉúÆ÷
-	TMOD &= 0x0F;		//Éè¶¨¶¨Ê±Æ÷1Îª16Î»×Ô¶¯ÖØ×°·½Ê½
-	TL1 = 0xCC;		//Éè¶¨¶¨Ê±³õÖµ
-	TH1 = 0xFF;		//Éè¶¨¶¨Ê±³õÖµ
-	ET1 = 0;		//½ûÖ¹¶¨Ê±Æ÷1ÖĞ¶Ï
+	SCON = 0x50;		//8ä½æ•°æ®,å¯å˜æ³¢ç‰¹ç‡
+	AUXR |= 0x40;		//å®šæ—¶å™¨1æ—¶é’Ÿä¸ºFosc,å³1T
+	AUXR &= 0xFE;		//ä¸²å£1é€‰æ‹©å®šæ—¶å™¨1ä¸ºæ³¢ç‰¹ç‡å‘ç”Ÿå™¨
+	TMOD &= 0x0F;		//è®¾å®šå®šæ—¶å™¨1ä¸º16ä½è‡ªåŠ¨é‡è£…æ–¹å¼
+	TL1 = 0xCC;		//è®¾å®šå®šæ—¶åˆå€¼
+	TH1 = 0xFF;		//è®¾å®šå®šæ—¶åˆå€¼
+	ET1 = 0;		//ç¦æ­¢å®šæ—¶å™¨1ä¸­æ–­
 	EA = 1;
 	ES = 1;
-	TR1 = 1;		//Æô¶¯¶¨Ê±Æ÷1
+	TR1 = 1;		//å¯åŠ¨å®šæ—¶å™¨1
 	RI = 0;
 }
 //Esp Uart Send
@@ -86,10 +76,10 @@ void toJson(char *oristr, const char *str, int value)
     char temp[] = "000";
     strcat(oristr, "\"");  // {"id":"1234567","version":"1.0","params":{"
     strcat(oristr, str);   // {"id":"1234567","version":"1.0","params":{"temp
-    strcat(oristr, "\":"); // {"id":"1234567","version":"1.0","params":{"temp"£º
+    strcat(oristr, "\":"); // {"id":"1234567","version":"1.0","params":{"temp"ï¼š
     if (value < 0)
     {
-        temp[0] = '-';   //Èç¹ûĞ¡ÓÚ0£¬¼Ó¸ººÅ
+        temp[0] = '-';   //å¦‚æœå°äº0ï¼ŒåŠ è´Ÿå·
     }
     else
     {
@@ -97,14 +87,14 @@ void toJson(char *oristr, const char *str, int value)
     }
     temp[1] = value / 10 + '0';
     temp[2] = value % 10 + '0';
-    strcat(oristr, temp); // {"id":"1234567","version":"1.0","params":{"temp"£ºÎÂ¶ÈÖµ
-    strcat(oristr, ",");  // {"id":"1234567","version":"1.0","params":{"temp"£ºÎÂ¶ÈÖµ£¬
+    strcat(oristr, temp); // {"id":"1234567","version":"1.0","params":{"temp"ï¼šæ¸©åº¦å€¼
+    strcat(oristr, ",");  // {"id":"1234567","version":"1.0","params":{"temp"ï¼šæ¸©åº¦å€¼ï¼Œ
 }
 //**********************************ESP8266*****************************************//
 //Commend Send
 void ESP8266_Set(u8 *puf) 	
 {    
-		Clear_Table();//Ã¿´Ë·¢ËÍÃüÁîÇ°Çå¿ÕÇ°Ò»´Î½ÓÊÕµ½µÄ»Ø¸´
+		Clear_Table();//æ¯æ­¤å‘é€å‘½ä»¤å‰æ¸…ç©ºå‰ä¸€æ¬¡æ¥æ”¶åˆ°çš„å›å¤
 	    while(*puf!='\0')                    
 		{   
 				Send_Uart(*puf);               
@@ -124,27 +114,27 @@ void esp_int()
 	Delay100ms();	
 	ESP8266_Set("AT+CIPMUX=0");//Enabling single connection
 	Delay100ms();			
-	ESP8266_Set("AT+CWJAP_CUR=\"316316\",\"@@@@@@@@\"");//Connect to the ap
+	ESP8266_Set("AT+CWJAP_CUR=\"Confidentiality confidentiality\",\"Confidentiality confidentiality\"");//Connect to the ap
 	delay_s(6);
 }
-//JSON±¨ÎÄ·¢ËÍ
+//JSONæŠ¥æ–‡å‘é€
 void IOT_Publish_Temphum(int temp, unsigned int hum)
 {
     // example: {"id":"12","version":"1.0","params":{"Temp":4,"Hum":4,"Gas":4},"method":"thing.event.property.set"}
     unsigned int i,j=0;
-    unsigned char id[8] = "1234567";//¹ÃÇÒÏÈĞ´ËÀ
+    unsigned char id[8] = "1234567";//å§‘ä¸”å…ˆå†™æ­»
     unsigned char str[300] = {0x30};
     unsigned char content[200] = "{\"id\":\""; // 7nums
     //unsigned char contentnum = 7;              // id from 8th
     unsigned char totalnum = 0; // TOPIC+CONTENT
     unsigned char enlargedbit = 0;
 		// Random id
-	//    Adc_Init();  //adc»ñµÃËæ»úÊı
+	//    Adc_Init();  //adcè·å¾—éšæœºæ•°
 	//    for (i = 0; i < 8; i++)
 	//    {
 	//        id[i] = '0' + (getRandom() % 10);
 	//    }
-    strcat(content, id);  //Á¬½Ócontent ºÍ id £¬ ¼´  {"id":"1234567
+    strcat(content, id);  //è¿æ¥content å’Œ id ï¼Œ å³  {"id":"1234567
     // Payload
     strcat(content, "\",\"version\":\"1.0\",\"params\":{");   //  {"id":"1234567","version":"1.0","params":{
     toJson(content, "temp", temp);                           
@@ -152,13 +142,13 @@ void IOT_Publish_Temphum(int temp, unsigned int hum)
     content[strlen(content) - 1] = '}';                       //  {"id":"1234567","version":"1.0","params":{"Temp":4,"Hum":4,"Gas":4}
     strcat(content, ",\"method\":\"thing.event.property.set\"}");
     // Length
-    totalnum = 52 + strlen(content);  //50 £ºlength  of topic 
+    totalnum = 52 + strlen(content);  //50 ï¼šlength  of topic 
 		str[1] = totalnum + 0x00;
 		str[2] = 0X01;
 		enlargedbit = 1;
 		str[2 + enlargedbit ] = 0x00;
-		str[3 + enlargedbit ] = 0x32; //topic µÄ³¤¶È
-    //TOPIC    /Ã»¼ÓtopicµÄ³¤¶È
+		str[3 + enlargedbit ] = 0x32; //topic çš„é•¿åº¦
+    //TOPIC    /æ²¡åŠ topicçš„é•¿åº¦
     for (i = 0; i < 50; i++)
     {
         str[4 + enlargedbit + i] = MessageSubscribeTopic[6+i];
@@ -186,32 +176,32 @@ void main()
 	{
 		ESP8266_Set("AT+CIPSTART=\"TCP\",\"a1UUBhveKMv.iot-as-mqtt.cn-shanghai.aliyuncs.com\",1883");
 		Delay800ms();
-		ESP8266_Set("AT+CIPMODE=1");//Ê¹ÄÜÍ¸´«
+		ESP8266_Set("AT+CIPMODE=1");//ä½¿èƒ½é€ä¼ 
 		Delay100ms();
-		ESP8266_Set("AT+CIPSEND");//¿ªÊ¼Í¸´«
+		ESP8266_Set("AT+CIPSEND");//å¼€å§‹é€ä¼ 
 		Delay100ms();
-		Clear_Table();//·¢ËÍ±¨ÎÄÇ°Çå¿Õ½ÓÊÕ
+		Clear_Table();//å‘é€æŠ¥æ–‡å‰æ¸…ç©ºæ¥æ”¶
 		i = 0;	
 		while (i < 115)
 		{
-			Send_Uart(MessageConnect[i++]);	 //Á¬½Ó±¨ÎÄ	    
+			Send_Uart(MessageConnect[i++]);	 //è¿æ¥æŠ¥æ–‡	    
 		}
 		i=0;
 		Delay100ms();
-		P10 = 0;  //Á¬½Ó³É¹¦ÁÁÒ»´ÎµÆ		
+		P10 = 0;  //è¿æ¥æˆåŠŸäº®ä¸€æ¬¡ç¯		
 		while (i < 57)
 		{
-			Send_Uart(MessageSubscribeTopic[i++]);	 //¶©ÔÄ±¨ÎÄ	    
+			Send_Uart(MessageSubscribeTopic[i++]);	 //è®¢é˜…æŠ¥æ–‡	    
 		}
 		i=0;
-		P10 = 1;  //¶©ÔÄ½áÊøÃğµÆ
+		P10 = 1;  //è®¢é˜…ç»“æŸç­ç¯
 		for(i=0;i<12;i++)
 		{
-			IOT_Publish_Temphum(1+i,1+i);   //Ñ­»··¢ËÍÎÂ¶È
+			IOT_Publish_Temphum(1+i,1+i);   //å¾ªç¯å‘é€æ¸©åº¦
 			delay_s(10);
 		}
 		Delay800ms();
-		Send_Uart(0xE0); //Á¬Ğø·¢ËÍ£¬ÎŞ·¨¶Ï¿ª
+		Send_Uart(0xE0); //è¿ç»­å‘é€ï¼Œæ— æ³•æ–­å¼€
 		Send_Uart(0x00);	
 		ESP8266_Set("+++");
 		delay_s(2); 		    
