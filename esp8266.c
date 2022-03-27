@@ -174,7 +174,7 @@ void main()
 	delay_s(15);
 	while(1)
 	{
-		ESP8266_Set("AT+CIPSTART=\"TCP\",\"a1UUBhveKMv.iot-as-mqtt.cn-shanghai.aliyuncs.com\",1883");
+		ESP8266_Set("AT+CIPSTART=\"TCP\",\"Confidentiality confidentiality\",1883");
 		Delay800ms();
 		ESP8266_Set("AT+CIPMODE=1");//使能透传
 		Delay100ms();
